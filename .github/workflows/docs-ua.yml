@@ -1,12 +1,12 @@
-name: English documentation
+name: Ukrainian documentation
 
 on:
   push:
     branches:
-      - master
+      - master-ua
   pull_request:
     branches:
-      - master
+      - master-ua
 
 jobs:
   docs:
@@ -28,3 +28,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
         publish_dir: ./html
+        destination_dir: ua
