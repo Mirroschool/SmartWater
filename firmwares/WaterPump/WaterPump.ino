@@ -5,29 +5,29 @@
 #include <EEPROM.h>
 #include <buttonMinim.h>
 
-#define PIN_RELAY 3 ///< Relay pin number
+#define PIN_RELAY 3 ///< Номер піну реле
 
-#define PIN_LEFT_BTN 7 ///< Left button pin number
-#define PIN_SELECT_BTN 6 ///< Select button pin number
-#define PIN_RIGHT_BTN 5 ///< Right button pin number
+#define PIN_LEFT_BTN 7 ///< Номер піну лівої кнопки
+#define PIN_SELECT_BTN 6 ///< Номер піну кнопки вибору
+#define PIN_RIGHT_BTN 5 ///< Номер піну правої кнопки
 
-#define PIN_HUMIDITY_SENSOR A0 ///< Analog pin 0 for soil moisture sensor
+#define PIN_HUMIDITY_SENSOR A0 ///< Аналоговий пін 0 для датчика вологості ґрунту
 
-#define SECONDS_OFFSET 10 ///< EEPROM adress offset for stroing uint32_t pumping timer
-#define PUMPING_SAFETY_INTERVAL 10000 ///< Minimal safe interval between pumping
+#define SECONDS_OFFSET 10 ///< Зміщення адреси EEPROM для зберігання таймера поливу
+#define PUMPING_SAFETY_INTERVAL 10000 ///< Мінімальний безпечний інтервал між перекачуванням води
 
 ///@{
-buttonMinim btnLeft(PIN_LEFT_BTN); ///< Left button object
-buttonMinim btnSelect(PIN_SELECT_BTN); ///< Select button object
-buttonMinim btnRight(PIN_RIGHT_BTN); ///< Right button object
+buttonMinim btnLeft(PIN_LEFT_BTN); ///< Об'єкт лівої кнопки
+buttonMinim btnSelect(PIN_SELECT_BTN); ///< Об'єкт кнопки вибору
+buttonMinim btnRight(PIN_RIGHT_BTN); ///< Об'єкт правої кнопки
 ///@}
 
-int8_t selectionPosition = 1; ///< Store current selection arrow position. Later used inside setSelectionArrow()
-bool selectionType = false; ///< Current selection type, affects arrow icon (false = hollow, true = full)
+int8_t selectionPosition = 1; ///< Поточна позиція стрілки. Пізніше використовується всередині setSelectionArrow()
+bool selectionType = false; ///< Поточний тип виділення, впливає на піктограму зі стрілкою (false = порожня, true = повна)
 
-/** @name Arrow characters
- *  Used to draw hollow and filled arrows for UI 
- 	(hollow = selected mode, full = edit mode)
+/** @name Символи стрілки
+ *  Використовується для малювання порожніх та заповнених стрілок для інтерфейсу користувача
+ 	(hollow = режим вибору, full = режим редагування)
  */
 ///@{
 uint8_t hollowLeftArrow[8] = { 0b11111, 0b01001, 0b00101, 0b00011, 0b00001, 0b00000, 0b00000, 0b00000 };
@@ -37,46 +37,46 @@ uint8_t fullRightArrow[8] = { 0b11111, 0b11110, 0b11100, 0b11000, 0b10000, 0b000
 ///@}
 
 
-/** @name Pumping settings
- *  Hours, minutes, seconds, and minimal humidity percentage which are displayed on the screen and synchronized with EEPROM.
- 	Used EEPROM offsets: 0 = hours, 1 = minutes, 2 = seconds, 3 = humidity
+/** @name Налаштування поливу
+ *  Години, хвилини, секунди та мінімальний відсоток вологості, які відображаються на екрані та синхронізуються з EEPROM.
+    Використані зміщення у EEPROM: 0 = години, 1 = хвилини, 2 = секунди, 3 = вологість
  */
 ///@{
 int8_t hoursInterval, minutesInterval, secondsInterval, humidityPercentage;
 ///@}
 
 
-/** @name Timers
- *  Timers used in loop(), to re-render UI, write and check eepprom time, and store last safely pumped time
+/** @name Таймери
+ *  Таймери, що використовуються в loop(), для повторного відображення інтерфейсу користувача, запису та перевірки часу eepprom та збереження останнього часу поливу
  */
 ///@{
-long renderTimer; ///< UI re-render timer
-long eepromSecondsTimer; ///< Check and write pumping intervals in EEPROM
-long lastPumpingTime; ///< Store last safely pumped time
+long renderTimer; ///< Таймер рендерингу інтерфейсу користувача
+long eepromSecondsTimer; ///< Таймер перевірки та запису інтервалу поливу в EEPROM
+long lastPumpingTime; ///< Таймер збереження часу останнього поливу (для перевірки інтервалу безпечності) 
 ///@}
 
 
-LiquidCrystal_I2C lcd(0x27, 20, 4); ///< LCD 2004 screen object
+LiquidCrystal_I2C lcd(0x27, 20, 4); ///< Екранний об'єкт LCD2004
 
 void setup()
 {
     Serial.begin(9600);
     randomSeed(analogRead(A0));
 
-    // Set relay pin to output and logic output to HIGH (HIGH means relay is closed)
+    // Встановити пін реле на вихід, та його значення на HIGH (HIGH означає, що реле закрито)
     pinMode(PIN_RELAY, OUTPUT);
     digitalWrite(PIN_RELAY, HIGH);
 
-    lcd.init(); // Initialize I2C connection to LCD screen
-    lcd.backlight(); // Turn display backlight
+    lcd.init(); // Ініціалізувати підключення I2C до РК-екрану
+    lcd.backlight(); // Увімкнути підсвічування дисплея
 
-    // Create arrow characters to use later
+    // Створити символи-стрілки для використання пізніше
     lcd.createChar(1, hollowLeftArrow);
     lcd.createChar(2, hollowRightArrow);
     lcd.createChar(3, fullLeftArrow);
     lcd.createChar(4, fullRightArrow);
 
-    // Load pumping interval from EEPROM
+    // Інтервал поливу з EEPROM
     hoursInterval = EEPROM.read(0);
     minutesInterval = EEPROM.read(1);
     secondsInterval = EEPROM.read(2);
@@ -87,9 +87,9 @@ void setup()
 
 void loop()
 {
-    // Menu interactions handling
+    // Обробка взаємодії з меню
     if (btnLeft.clicked() || btnLeft.holding()) {
-        // Left button
+        // Ліва кнопка
         if (selectionType == 0) {
             selectionPosition--;
             if (selectionPosition < 1)
@@ -124,7 +124,7 @@ void loop()
         }
     }
 
-    // Select button
+    // Кнопка вибору
     if (btnSelect.clicked()) {
         if (selectionType == 0) {
             selectionType = 1;
@@ -139,7 +139,7 @@ void loop()
         }
     }
 
-    // Right button
+    // Права кнопка
     if (btnRight.clicked() || btnRight.holding()) {
         if (selectionType == 0) {
             selectionPosition++;
@@ -175,15 +175,15 @@ void loop()
     }
 
     if (millis() - renderTimer > 1000) {
-        // Re-render screen each second
+        // Повторна відмальовка екрану щосекунди
         refresh(selectionType, selectionPosition);
         renderTimer = millis();
     }
 
     if (millis() - eepromSecondsTimer > 60000) {
-        // Every 60 seconds read stored time from EEPROM in seconds. Then compare it with set pumping interval
-        // If this time is bigger than pumping interval, then start pumping and set pumping interval check timer to 0
-        // Otherwise increment it by 60 seconds
+        // Кожні 60 секунд зчитувати збережений часу з EEPROM в секундах. Потім порівняння його із заданим інтервалом поливу
+        // Якщо цей час перевищує інтервал поливу, тоді починається перекачування води та таймер перевірки інтервалу накачування обнуляється
+        // В іншому випадку додається 60 секунд
         unsigned long secondsFromLastPumpingCheck = EEPROMReadlong(SECONDS_OFFSET);
         unsigned long pumpingInterval = hoursInterval * 3600 + minutesInterval * 60 + secondsInterval;
 
@@ -206,45 +206,45 @@ void loop()
     }
 }
 
-/// @brief Write long int to EEPROM
-/// This function will write a 4 byte (32bit) long to the EEPROM
-/// at the specified address to adress + 3.
+/// @brief Запис long int в EEPROM
+/// Ця функція запише 4-байтне (32-бітне) число в EEPROM
+/// за вказаною адресою для адреси + 3.
 void EEPROMWritelong(int address, long value)
 {
-    // Decomposition from a long to 4 bytes by using bitshift.
-    // One = Most significant -> Four = Least significant byte
+    // Розкладання з long на 4 байти за допомогою бітового зсуву.
+    // one = Найважливіший -> four = Найменший значущий байт
     byte four = (value & 0xFF);
     byte three = ((value >> 8) & 0xFF);
     byte two = ((value >> 16) & 0xFF);
     byte one = ((value >> 24) & 0xFF);
 
-    // Write the 4 bytes into the EEPROM memory.
+    // Записати 4 байти в пам’ять EEPROM.
     EEPROM.write(address, four);
     EEPROM.write(address + 1, three);
     EEPROM.write(address + 2, two);
     EEPROM.write(address + 3, one);
 }
 
-/// @brief Read long int from EEPROM
-/// This function will return a 4 byte (32bit) long from the EEPROM
-/// at the specified address to adress + 3.
+/// @brief Прочитайте long int з EEPROM
+/// Ця функція поверне 4-байтне (32-бітне) число з EEPROM
+/// за вказаною адресою для адреси + 3.
 long EEPROMReadlong(long address)
 {
-    // Read the 4 bytes from the EEPROM memory.
+    // Зчитати 4 байти з пам'яті EEPROM.
     long four = EEPROM.read(address);
     long three = EEPROM.read(address + 1);
     long two = EEPROM.read(address + 2);
     long one = EEPROM.read(address + 3);
 
-    // Return the recomposed long by using bitshift.
+    // Повернути перекомпонований long int за допомогою бітового зміщення.
     return ((four << 0) & 0xFF) + ((three << 8) & 0xFFFF) + ((two << 16) & 0xFFFFFF) + ((one << 24) & 0xFFFFFFFF);
 }
 
-/// @brief Start water pumping if it's safe
-/// \returns Pumping status 
+/// @brief Починає накачувати воду, якщо це безпечно
+/// \returns Статус відкачки 
 bool startPumping()
 {
-    // Starts pumping if safety interval passed
+    // Починає перекачування, якщо пройшов інтервал безпеки від попереднього процесу поливу
     if (millis() - lastPumpingTime > PUMPING_SAFETY_INTERVAL) {
         digitalWrite(PIN_RELAY, LOW);
         delay(3000);
@@ -257,10 +257,10 @@ bool startPumping()
     }
 }
 
-/// @brief Displays decimal number on the screen 
-/// @param x X coordinate
-/// @param y Y coordinate
-/// @param dec 1-2 digit integer to draw
+/// @brief Відображає число на екрані
+/// @param x Координата X
+/// @param y Y координата
+/// @param dec 1-2-значне ціле число, щоб відобразити
 void decOut(int x, int y, int dec)
 {
     lcd.setCursor(x, y);
@@ -268,7 +268,7 @@ void decOut(int x, int y, int dec)
     lcd.print(dec % 10);
 }
 
-/// @brief Displays current settings of pumping interval and minimal humidity settings
+/// @brief Відображає поточні налаштування інтервалу поливу та мінімальної вологості ґрунту
 void displaySettings()
 {
     decOut(0, 1, hoursInterval);
@@ -281,7 +281,7 @@ void displaySettings()
     lcd.print("%");
 }
 
-/// @brief Displays current soil moisture on the screen
+/// @brief Відображає поточну вологість ґрунту на екрані
 void displayCurrentHumidity()
 {    
     lcd.setCursor(0, 3);
@@ -290,19 +290,19 @@ void displayCurrentHumidity()
     lcd.print("%");
 }
 
-/// @brief Get soil moisture percentage
-/// \returns Moisture value from sensor, between 0 and 99 percent
+/// @brief Отримує поточний відсоток вологості ґрунту
+/// \returns Значення вологи від датчика, від 0 до 99 відсотків
 int getHumidityPercentage()
 {
-    // Reads analog pin value and maps it to 0-99% range
+    // Зчитати аналогове значення і перевести його в діапазон 0-99%
     int humidityAnalogValue = analogRead(PIN_HUMIDITY_SENSOR);
 
     return map(humidityAnalogValue, 0, 1023, 99, 0);
 }
 
-/// @brief Draw settings arrow
-/// @param type Determines hollow (type = false) or full (type = true) arrow type
-/// @param pos Position of arrow (1 = hours, 2 = minutes, 3 = seconds, 4 = minimal humidity)
+/// @brief Відмалювати стрілку налаштувань
+/// @param type Визначає порожнистий (type = false) або повний (type = true) тип стрілки
+/// @param pos Положення стрілки (1 = години, 2 = хвилини, 3 = секунди, 4 = мінімальна вологість)
 void setSelectionArrow(bool type, int pos)
 {
     switch (pos) {
@@ -330,7 +330,7 @@ void setSelectionArrow(bool type, int pos)
     }
 }
 
-/// @brief Re-render whole screen
+/// @brief Повторно перемалювати весь екран
 void refresh(bool selType, int selPos)
 {
     lcd.clear();
