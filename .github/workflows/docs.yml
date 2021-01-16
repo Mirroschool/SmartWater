@@ -1,4 +1,4 @@
-name: Generate and publish documentation
+name: English documentation
 
 on:
   push:
