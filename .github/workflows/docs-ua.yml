@@ -1,0 +1,31 @@
+name: Ukrainian documentation
+
+on:
+  push:
+    branches:
+      - master-ua
+  pull_request:
+    branches:
+      - master-ua
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Launch Doxygen
+      uses: mattnotmitt/doxygen-action@v1
+      with:
+        working-directory: '.'
+        doxyfile-path: './Doxyfile'
+        enable-latex: false
+
+    - name: Deploy Docs
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: ./html
+        destination_dir: ua
