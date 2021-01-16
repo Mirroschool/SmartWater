@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mirroschool: Текст програми firmwares/WaterPump/WaterPump.ino</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Mirroschool
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Створено системою Doxygen 1.9.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Пошук','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Пошук');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_water_pump_8ino_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">WaterPump.ino</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="_water_pump_8ino.html">Див. документацію.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;LiquidCrystal_I2C.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;EEPROM.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;buttonMinim.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">    8</a></span>&#160;<span class="preprocessor">#define PIN_RELAY 3 </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">   10</a></span>&#160;<span class="preprocessor">#define PIN_LEFT_BTN 7 </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a9c559b66e76d86d927294457a446c665">   11</a></span>&#160;<span class="preprocessor">#define PIN_SELECT_BTN 6 </span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">   12</a></span>&#160;<span class="preprocessor">#define PIN_RIGHT_BTN 5 </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">   14</a></span>&#160;<span class="preprocessor">#define PIN_HUMIDITY_SENSOR A0 </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">   16</a></span>&#160;<span class="preprocessor">#define SECONDS_OFFSET 10 </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">   17</a></span>&#160;<span class="preprocessor">#define PUMPING_SAFETY_INTERVAL 10000 </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">   20</a></span>&#160;buttonMinim <a class="code" href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a>(<a class="code" href="_water_pump_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a>); </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">   21</a></span>&#160;buttonMinim <a class="code" href="_water_pump_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">btnSelect</a>(<a class="code" href="_water_pump_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a>); </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">   22</a></span>&#160;buttonMinim <a class="code" href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a>(<a class="code" href="_water_pump_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a>); </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">   25</a></span>&#160;int8_t <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> = 1; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">   26</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> = <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;uint8_t hollowLeftArrow[8] = { 0b11111, 0b01001, 0b00101, 0b00011, 0b00001, 0b00000, 0b00000, 0b00000 };</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;uint8_t hollowRightArrow[8] = { 0b11111, 0b10010, 0b10100, 0b11000, 0b10000, 0b00000, 0b00000, 0b00000 };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;uint8_t fullLeftArrow[8] = { 0b11111, 0b01111, 0b00111, 0b00011, 0b00001, 0b00000, 0b00000, 0b00000 };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;uint8_t fullRightArrow[8] = { 0b11111, 0b11110, 0b11100, 0b11000, 0b10000, 0b00000, 0b00000, 0b00000 };</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;int8_t hoursInterval, minutesInterval, secondsInterval, humidityPercentage;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">   53</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a>; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">   54</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">   55</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">   59</a></span>&#160;LiquidCrystal_I2C <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>(0x27, 20, 4); </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> setup()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Serial.begin(9600);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    randomSeed(analogRead(A0));</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Встановити пін реле на вихід, та його значення на HIGH (HIGH означає, що реле закрито)</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    pinMode(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, OUTPUT);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    digitalWrite(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, HIGH);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.init(); <span class="comment">// Ініціалізувати підключення I2C до РК-екрану</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.backlight(); <span class="comment">// Увімкнути підсвічування дисплея</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Створити символи-стрілки для використання пізніше</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.createChar(1, hollowLeftArrow);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.createChar(2, hollowRightArrow);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.createChar(3, fullLeftArrow);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.createChar(4, fullRightArrow);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Інтервал поливу з EEPROM</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    hoursInterval = EEPROM.read(0);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    minutesInterval = EEPROM.read(1);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    secondsInterval = EEPROM.read(2);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    humidityPercentage = EEPROM.read(3);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="keywordtype">void</span> loop()</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// Обробка взаємодії з меню</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a>.clicked() || <a class="code" href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a>.holding()) {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="comment">// Ліва кнопка</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> == 0) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>--;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> &lt; 1)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> = 1;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">switch</span> (<a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>) {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                hoursInterval--;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordflow">if</span> (hoursInterval &lt; 0)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    hoursInterval = 23;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                minutesInterval--;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <span class="keywordflow">if</span> (minutesInterval &lt; 0)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                    minutesInterval = 59;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                secondsInterval--;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">if</span> (secondsInterval &lt; 0)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                    secondsInterval = 59;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                humidityPercentage--;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <span class="keywordflow">if</span> (humidityPercentage &lt; 0)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    humidityPercentage = 100;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Кнопка вибору</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">btnSelect</a>.clicked()) {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> == 0) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> = 1;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> = 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            EEPROM.write(0, hoursInterval);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            EEPROM.write(1, minutesInterval);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            EEPROM.write(2, secondsInterval);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            EEPROM.write(3, humidityPercentage);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// Права кнопка</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a>.clicked() || <a class="code" href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a>.holding()) {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> == 0) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>++;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> &gt; 4)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> = 4;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">switch</span> (<a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                hoursInterval++;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <span class="keywordflow">if</span> (hoursInterval &gt; 23)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    hoursInterval = 0;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                minutesInterval++;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                <span class="keywordflow">if</span> (minutesInterval &gt; 59)</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    minutesInterval = 0;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                secondsInterval++;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                <span class="keywordflow">if</span> (secondsInterval &gt; 59)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    secondsInterval = 0;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                humidityPercentage++;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                <span class="keywordflow">if</span> (humidityPercentage &gt; 100)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                    humidityPercentage = 0;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">if</span> (millis() - <a class="code" href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a> &gt; 1000) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">// Повторна відмальовка екрану щосекунди</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<a class="code" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a>, <a class="code" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a>);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a> = millis();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span> (millis() - <a class="code" href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a> &gt; 60000) {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="comment">// Кожні 60 секунд зчитувати збережений часу з EEPROM в секундах. Потім порівняння його із заданим інтервалом поливу</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment">// Якщо цей час перевищує інтервал поливу, тоді починається перекачування води та таймер перевірки інтервалу накачування обнуляється</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// В іншому випадку додається 60 секунд</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> secondsFromLastPumpingCheck = <a class="code" href="_water_pump_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">EEPROMReadlong</a>(<a class="code" href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> pumpingInterval = hoursInterval * 3600 + minutesInterval * 60 + secondsInterval;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">if</span> (secondsFromLastPumpingCheck &gt; pumpingInterval) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a>()) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                Serial.println(<span class="stringliteral">&quot;Humidity is too low. Pumping!&quot;</span>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a>(<a class="code" href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a>, 0);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            }</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <a class="code" href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a>(<a class="code" href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a>, secondsFromLastPumpingCheck + 60);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a> = millis();</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a>() &lt; humidityPercentage) {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        Serial.println(<span class="stringliteral">&quot;Humidity is too low. Pumping!&quot;</span>);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a>();</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">  212</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a>(<span class="keywordtype">int</span> address, <span class="keywordtype">long</span> value)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;{</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">// Розкладання з long на 4 байти за допомогою бітового зсуву.</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="comment">// one = Найважливіший -&gt; four = Найменший значущий байт</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">byte</span> four = (value &amp; 0xFF);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">byte</span> three = ((value &gt;&gt; 8) &amp; 0xFF);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordtype">byte</span> two = ((value &gt;&gt; 16) &amp; 0xFF);</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordtype">byte</span> one = ((value &gt;&gt; 24) &amp; 0xFF);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="comment">// Записати 4 байти в пам’ять EEPROM.</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    EEPROM.write(address, four);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    EEPROM.write(address + 1, three);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    EEPROM.write(address + 2, two);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    EEPROM.write(address + 3, one);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">  231</a></span>&#160;<span class="keywordtype">long</span> <a class="code" href="_water_pump_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">EEPROMReadlong</a>(<span class="keywordtype">long</span> address)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="comment">// Зчитати 4 байти з пам&#39;яті EEPROM.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordtype">long</span> four = EEPROM.read(address);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">long</span> three = EEPROM.read(address + 1);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">long</span> two = EEPROM.read(address + 2);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">long</span> one = EEPROM.read(address + 3);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">// Повернути перекомпонований long int за допомогою бітового зміщення.</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">return</span> ((four &lt;&lt; 0) &amp; 0xFF) + ((three &lt;&lt; 8) &amp; 0xFFFF) + ((two &lt;&lt; 16) &amp; 0xFFFFFF) + ((one &lt;&lt; 24) &amp; 0xFFFFFFFF);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">  245</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a>()</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;{</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// Починає перекачування, якщо пройшов інтервал безпеки від попереднього процесу поливу</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (millis() - <a class="code" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> &gt; <a class="code" href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a>) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        digitalWrite(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, LOW);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        delay(3000);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        digitalWrite(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, HIGH);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> = millis();        </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">  264</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> dec)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;{</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(x, y);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec / 10);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec % 10);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">  272</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">displaySettings</a>()</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;{</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a>(0, 1, hoursInterval);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a>(3, 1, minutesInterval);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<span class="stringliteral">&quot;:&quot;</span>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a>(6, 1, secondsInterval);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(11, 1);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(humidityPercentage);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<span class="stringliteral">&quot;%&quot;</span>);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">  285</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">displayCurrentHumidity</a>()</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;{    </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(0, 3);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<span class="stringliteral">&quot;Humidity - &quot;</span>);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<a class="code" href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a>());</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(<span class="stringliteral">&quot;%&quot;</span>);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;}</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">  295</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a>()</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;{</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">// Зчитати аналогове значення і перевести його в діапазон 0-99%</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordtype">int</span> humidityAnalogValue = analogRead(<a class="code" href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a>);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> map(humidityAnalogValue, 0, 1023, 99, 0);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">  306</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">setSelectionArrow</a>(<span class="keywordtype">bool</span> type, <span class="keywordtype">int</span> pos)</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;{</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">switch</span> (pos) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">case</span> 1:</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(0, 0);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">case</span> 2:</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(3, 0);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">case</span> 3:</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(6, 0);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(11, 0);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (!type) {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(1);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(2);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(3);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(4);</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno"><a class="line" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">  334</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a>(<span class="keywordtype">bool</span> selType, <span class="keywordtype">int</span> selPos)</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;{</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.clear();</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <a class="code" href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">setSelectionArrow</a>(selType, selPos);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <a class="code" href="_water_pump_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">displaySettings</a>();</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <a class="code" href="_water_pump_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">displayCurrentHumidity</a>();</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
+<div class="ttc" id="a_water_pump_8ino_html_a0422c7715bf2034631d561fb72b70a16"><div class="ttname"><a href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a></div><div class="ttdeci">long lastPumpingTime</div><div class="ttdoc">Таймер збереження часу останнього поливу (для перевірки інтервалу безпечності)</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00055">WaterPump.ino:55</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a09b5826a209880a855efce138c142cde"><div class="ttname"><a href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a></div><div class="ttdeci">long eepromSecondsTimer</div><div class="ttdoc">Таймер перевірки та запису інтервалу поливу в EEPROM.</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00054">WaterPump.ino:54</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a0f5378a0e4dbdb9c9e97e8c0416b6ef9"><div class="ttname"><a href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a></div><div class="ttdeci">buttonMinim btnLeft(PIN_LEFT_BTN)</div><div class="ttdoc">Об'єкт лівої кнопки</div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a11dc1e15f72a076ee66162ebe20f23b4"><div class="ttname"><a href="_water_pump_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">EEPROMReadlong</a></div><div class="ttdeci">long EEPROMReadlong(long address)</div><div class="ttdoc">Прочитайте long int з EEPROM Ця функція поверне 4-байтне (32-бітне) число з EEPROM за вказаною адресо...</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00231">WaterPump.ino:231</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a1337c7aff6648578a4f380d9018ae791"><div class="ttname"><a href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a></div><div class="ttdeci">void decOut(int x, int y, int dec)</div><div class="ttdoc">Відображає число на екрані</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00264">WaterPump.ino:264</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a25e42b0322d89dcce6c8b8c3b1d2fe8d"><div class="ttname"><a href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a></div><div class="ttdeci">#define SECONDS_OFFSET</div><div class="ttdoc">Зміщення адреси EEPROM для зберігання таймера поливу</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00016">WaterPump.ino:16</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a2ff7a2cf6585ec078b02dae852823f9e"><div class="ttname"><a href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a></div><div class="ttdeci">void EEPROMWritelong(int address, long value)</div><div class="ttdoc">Запис long int в EEPROM Ця функція запише 4-байтне (32-бітне) число в EEPROM за вказаною адресою для ...</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00212">WaterPump.ino:212</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a3464ad2da6d0b6f1e7869777f97cdb21"><div class="ttname"><a href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a></div><div class="ttdeci">void refresh(bool selType, int selPos)</div><div class="ttdoc">Повторно перемалювати весь екран</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00334">WaterPump.ino:334</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a4463f8780beb1b0356e8fa4673604e1a"><div class="ttname"><a href="_water_pump_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">displaySettings</a></div><div class="ttdeci">void displaySettings()</div><div class="ttdoc">Відображає поточні налаштування інтервалу поливу та мінімальної вологості ґрунту</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00272">WaterPump.ino:272</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a47d71586b910bfbbc3e460cf12a3e1ba"><div class="ttname"><a href="_water_pump_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">displayCurrentHumidity</a></div><div class="ttdeci">void displayCurrentHumidity()</div><div class="ttdoc">Відображає поточну вологість ґрунту на екрані</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00285">WaterPump.ino:285</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a48834bb5f077cf8a67d10e2b926b75dc"><div class="ttname"><a href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a></div><div class="ttdeci">bool selectionType</div><div class="ttdoc">Поточний тип виділення, впливає на піктограму зі стрілкою (false = порожня, true = повна)</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00026">WaterPump.ino:26</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a632144055c730bb27c4faa119c874a9f"><div class="ttname"><a href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">setSelectionArrow</a></div><div class="ttdeci">void setSelectionArrow(bool type, int pos)</div><div class="ttdoc">Відмалювати стрілку налаштувань</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00306">WaterPump.ino:306</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a670b18fa6d7200712d13be30be05611b"><div class="ttname"><a href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a></div><div class="ttdeci">#define PUMPING_SAFETY_INTERVAL</div><div class="ttdoc">Мінімальний безпечний інтервал між перекачуванням води</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00017">WaterPump.ino:17</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a6f630a04d791caa0d6d2ed7d74263b84"><div class="ttname"><a href="_water_pump_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">btnSelect</a></div><div class="ttdeci">buttonMinim btnSelect(PIN_SELECT_BTN)</div><div class="ttdoc">Об'єкт кнопки вибору</div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a84bf1ecd981b685590a3862c30d2be4f"><div class="ttname"><a href="_water_pump_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a></div><div class="ttdeci">#define PIN_RIGHT_BTN</div><div class="ttdoc">Номер піну правої кнопки</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00012">WaterPump.ino:12</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_a9c559b66e76d86d927294457a446c665"><div class="ttname"><a href="_water_pump_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a></div><div class="ttdeci">#define PIN_SELECT_BTN</div><div class="ttdoc">Номер піну кнопки вибору</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00011">WaterPump.ino:11</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_aa5049808219ba86e7128edcce54f5497"><div class="ttname"><a href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a></div><div class="ttdeci">#define PIN_RELAY</div><div class="ttdoc">Номер піну реле</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00008">WaterPump.ino:8</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_aa7807dcd2ec6cb69b2e040a4f28a7ad4"><div class="ttname"><a href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a></div><div class="ttdeci">buttonMinim btnRight(PIN_RIGHT_BTN)</div><div class="ttdoc">Об'єкт правої кнопки</div></div>
+<div class="ttc" id="a_water_pump_8ino_html_ac139fc3ef460f1e6eaa1784c97e4f132"><div class="ttname"><a href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a></div><div class="ttdeci">long renderTimer</div><div class="ttdoc">Таймер відмальовки інтерфейсу користувача</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00053">WaterPump.ino:53</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_ac21d052bacaf620de472c9d000f0be38"><div class="ttname"><a href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a></div><div class="ttdeci">LiquidCrystal_I2C lcd(0x27, 20, 4)</div><div class="ttdoc">Екранний об'єкт LCD2004.</div></div>
+<div class="ttc" id="a_water_pump_8ino_html_ac6b8a14f9f7e456b8ff0c1a7d600e2d0"><div class="ttname"><a href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a></div><div class="ttdeci">int8_t selectionPosition</div><div class="ttdoc">Поточна позиція стрілки. Пізніше використовується всередині setSelectionArrow()</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00025">WaterPump.ino:25</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_acf678cd18a1e18f38cffd840e9bd659d"><div class="ttname"><a href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a></div><div class="ttdeci">bool startPumping()</div><div class="ttdoc">Починає накачувати воду, якщо це безпечно</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00245">WaterPump.ino:245</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_ad40ef48f43c3b55676688d9fd88f6384"><div class="ttname"><a href="_water_pump_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a></div><div class="ttdeci">#define PIN_LEFT_BTN</div><div class="ttdoc">Номер піну лівої кнопки</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00010">WaterPump.ino:10</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_af8b4d5e89c0d1c35beeb5032646a6d3e"><div class="ttname"><a href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a></div><div class="ttdeci">int getHumidityPercentage()</div><div class="ttdoc">Отримує поточний відсоток вологості ґрунту</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00295">WaterPump.ino:295</a></div></div>
+<div class="ttc" id="a_water_pump_8ino_html_af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><div class="ttname"><a href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a></div><div class="ttdeci">#define PIN_HUMIDITY_SENSOR</div><div class="ttdoc">Аналоговий пін 0 для датчика вологості ґрунту</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00014">WaterPump.ino:14</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_ee49014ee30b475461e5afc910888cd4.html">firmwares</a></li><li class="navelem"><a class="el" href="dir_8c58555a76be2a3d5b3f7409cfe0a77c.html">WaterPump</a></li><li class="navelem"><a class="el" href="_water_pump_8ino.html">WaterPump.ino</a></li>
+    <li class="footer">Створено системою <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.0 </li>
+  </ul>
+</div>
+</body>
+</html>
