@@ -1,4 +1,4 @@
-/**@file WaterPump.ino */
+/**@file SmartWater.ino */
 
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
