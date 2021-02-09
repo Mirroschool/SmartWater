@@ -1,4 +1,4 @@
-# WaterPump
+# SmartWater
 
 ## Documentation
 - [English](https://mirroschool.github.io/WaterPump/)
