@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mirroschool: firmwares/WaterPump/WaterPump.ino File Reference</title>
+<title>Mirroschool: firmwares/WaterPump/SmartWater.ino File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('_water_pump_8ino.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('_smart_water_8ino.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('_water_pump_8ino.html',''); initResiza
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
-<div class="title">WaterPump.ino File Reference</div>  </div>
+<div class="title">SmartWater.ino File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;Wire.h&gt;</code><br />
@@ -94,99 +94,99 @@ $(document).ready(function(){initNavTree('_water_pump_8ino.html',''); initResiza
 <code>#include &lt;EEPROM.h&gt;</code><br />
 <code>#include &lt;buttonMinim.h&gt;</code><br />
 </div>
-<p><a href="_water_pump_8ino_source.html">Go to the source code of this file.</a></p>
+<p><a href="_smart_water_8ino_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aa5049808219ba86e7128edcce54f5497"><td class="memItemLeft" align="right" valign="top"><a id="aa5049808219ba86e7128edcce54f5497"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>&#160;&#160;&#160;3</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>&#160;&#160;&#160;3</td></tr>
 <tr class="memdesc:aa5049808219ba86e7128edcce54f5497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relay pin number. <br /></td></tr>
 <tr class="separator:aa5049808219ba86e7128edcce54f5497"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad40ef48f43c3b55676688d9fd88f6384"><td class="memItemLeft" align="right" valign="top"><a id="ad40ef48f43c3b55676688d9fd88f6384"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a>&#160;&#160;&#160;7</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a>&#160;&#160;&#160;7</td></tr>
 <tr class="memdesc:ad40ef48f43c3b55676688d9fd88f6384"><td class="mdescLeft">&#160;</td><td class="mdescRight">Left button pin number. <br /></td></tr>
 <tr class="separator:ad40ef48f43c3b55676688d9fd88f6384"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c559b66e76d86d927294457a446c665"><td class="memItemLeft" align="right" valign="top"><a id="a9c559b66e76d86d927294457a446c665"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a>&#160;&#160;&#160;6</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a>&#160;&#160;&#160;6</td></tr>
 <tr class="memdesc:a9c559b66e76d86d927294457a446c665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select button pin number. <br /></td></tr>
 <tr class="separator:a9c559b66e76d86d927294457a446c665"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84bf1ecd981b685590a3862c30d2be4f"><td class="memItemLeft" align="right" valign="top"><a id="a84bf1ecd981b685590a3862c30d2be4f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a>&#160;&#160;&#160;5</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a>&#160;&#160;&#160;5</td></tr>
 <tr class="memdesc:a84bf1ecd981b685590a3862c30d2be4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right button pin number. <br /></td></tr>
 <tr class="separator:a84bf1ecd981b685590a3862c30d2be4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><td class="memItemLeft" align="right" valign="top"><a id="af9cffdf311d0a8ddb1ae6ba24e6b5c1b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a>&#160;&#160;&#160;A0</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a>&#160;&#160;&#160;A0</td></tr>
 <tr class="memdesc:af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analog pin 0 for soil moisture sensor. <br /></td></tr>
 <tr class="separator:af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e42b0322d89dcce6c8b8c3b1d2fe8d"><td class="memItemLeft" align="right" valign="top"><a id="a25e42b0322d89dcce6c8b8c3b1d2fe8d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a>&#160;&#160;&#160;10</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a25e42b0322d89dcce6c8b8c3b1d2fe8d">SECONDS_OFFSET</a>&#160;&#160;&#160;10</td></tr>
 <tr class="memdesc:a25e42b0322d89dcce6c8b8c3b1d2fe8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">EEPROM adress offset for stroing uint32_t pumping timer. <br /></td></tr>
 <tr class="separator:a25e42b0322d89dcce6c8b8c3b1d2fe8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a670b18fa6d7200712d13be30be05611b"><td class="memItemLeft" align="right" valign="top"><a id="a670b18fa6d7200712d13be30be05611b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a>&#160;&#160;&#160;10000</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a>&#160;&#160;&#160;10000</td></tr>
 <tr class="memdesc:a670b18fa6d7200712d13be30be05611b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimal safe interval between pumping. <br /></td></tr>
 <tr class="separator:a670b18fa6d7200712d13be30be05611b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ac21d052bacaf620de472c9d000f0be38"><td class="memItemLeft" align="right" valign="top"><a id="ac21d052bacaf620de472c9d000f0be38"></a>
-LiquidCrystal_I2C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a> (0x27, 20, 4)</td></tr>
+LiquidCrystal_I2C&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a> (0x27, 20, 4)</td></tr>
 <tr class="memdesc:ac21d052bacaf620de472c9d000f0be38"><td class="mdescLeft">&#160;</td><td class="mdescRight">LCD 2004 screen object. <br /></td></tr>
 <tr class="separator:ac21d052bacaf620de472c9d000f0be38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ff7a2cf6585ec078b02dae852823f9e"><td class="memItemLeft" align="right" valign="top"><a id="a2ff7a2cf6585ec078b02dae852823f9e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a> (int address, long value)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a2ff7a2cf6585ec078b02dae852823f9e">EEPROMWritelong</a> (int address, long value)</td></tr>
 <tr class="memdesc:a2ff7a2cf6585ec078b02dae852823f9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write long int to EEPROM This function will write a 4 byte (32bit) long to the EEPROM at the specified address to adress + 3. <br /></td></tr>
 <tr class="separator:a2ff7a2cf6585ec078b02dae852823f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11dc1e15f72a076ee66162ebe20f23b4"><td class="memItemLeft" align="right" valign="top"><a id="a11dc1e15f72a076ee66162ebe20f23b4"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">EEPROMReadlong</a> (long address)</td></tr>
+long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a11dc1e15f72a076ee66162ebe20f23b4">EEPROMReadlong</a> (long address)</td></tr>
 <tr class="memdesc:a11dc1e15f72a076ee66162ebe20f23b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read long int from EEPROM This function will return a 4 byte (32bit) long from the EEPROM at the specified address to adress + 3. <br /></td></tr>
 <tr class="separator:a11dc1e15f72a076ee66162ebe20f23b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf678cd18a1e18f38cffd840e9bd659d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a> ()</td></tr>
-<tr class="memdesc:acf678cd18a1e18f38cffd840e9bd659d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start water pumping if it's safe.  <a href="_water_pump_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">More...</a><br /></td></tr>
+<tr class="memitem:acf678cd18a1e18f38cffd840e9bd659d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">startPumping</a> ()</td></tr>
+<tr class="memdesc:acf678cd18a1e18f38cffd840e9bd659d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start water pumping if it's safe.  <a href="_smart_water_8ino.html#acf678cd18a1e18f38cffd840e9bd659d">More...</a><br /></td></tr>
 <tr class="separator:acf678cd18a1e18f38cffd840e9bd659d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1337c7aff6648578a4f380d9018ae791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a> (int x, int y, int dec)</td></tr>
-<tr class="memdesc:a1337c7aff6648578a4f380d9018ae791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays decimal number on the screen.  <a href="_water_pump_8ino.html#a1337c7aff6648578a4f380d9018ae791">More...</a><br /></td></tr>
+<tr class="memitem:a1337c7aff6648578a4f380d9018ae791"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a1337c7aff6648578a4f380d9018ae791">decOut</a> (int x, int y, int dec)</td></tr>
+<tr class="memdesc:a1337c7aff6648578a4f380d9018ae791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays decimal number on the screen.  <a href="_smart_water_8ino.html#a1337c7aff6648578a4f380d9018ae791">More...</a><br /></td></tr>
 <tr class="separator:a1337c7aff6648578a4f380d9018ae791"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4463f8780beb1b0356e8fa4673604e1a"><td class="memItemLeft" align="right" valign="top"><a id="a4463f8780beb1b0356e8fa4673604e1a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">displaySettings</a> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a4463f8780beb1b0356e8fa4673604e1a">displaySettings</a> ()</td></tr>
 <tr class="memdesc:a4463f8780beb1b0356e8fa4673604e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays current settings of pumping interval and minimal humidity settings. <br /></td></tr>
 <tr class="separator:a4463f8780beb1b0356e8fa4673604e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47d71586b910bfbbc3e460cf12a3e1ba"><td class="memItemLeft" align="right" valign="top"><a id="a47d71586b910bfbbc3e460cf12a3e1ba"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">displayCurrentHumidity</a> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a47d71586b910bfbbc3e460cf12a3e1ba">displayCurrentHumidity</a> ()</td></tr>
 <tr class="memdesc:a47d71586b910bfbbc3e460cf12a3e1ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays current soil moisture on the screen. <br /></td></tr>
 <tr class="separator:a47d71586b910bfbbc3e460cf12a3e1ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8b4d5e89c0d1c35beeb5032646a6d3e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a> ()</td></tr>
-<tr class="memdesc:af8b4d5e89c0d1c35beeb5032646a6d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get soil moisture percentage.  <a href="_water_pump_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">More...</a><br /></td></tr>
+<tr class="memitem:af8b4d5e89c0d1c35beeb5032646a6d3e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">getHumidityPercentage</a> ()</td></tr>
+<tr class="memdesc:af8b4d5e89c0d1c35beeb5032646a6d3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get soil moisture percentage.  <a href="_smart_water_8ino.html#af8b4d5e89c0d1c35beeb5032646a6d3e">More...</a><br /></td></tr>
 <tr class="separator:af8b4d5e89c0d1c35beeb5032646a6d3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a632144055c730bb27c4faa119c874a9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">setSelectionArrow</a> (bool type, int pos)</td></tr>
-<tr class="memdesc:a632144055c730bb27c4faa119c874a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw settings arrow.  <a href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f">More...</a><br /></td></tr>
+<tr class="memitem:a632144055c730bb27c4faa119c874a9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a632144055c730bb27c4faa119c874a9f">setSelectionArrow</a> (bool type, int pos)</td></tr>
+<tr class="memdesc:a632144055c730bb27c4faa119c874a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw settings arrow.  <a href="_smart_water_8ino.html#a632144055c730bb27c4faa119c874a9f">More...</a><br /></td></tr>
 <tr class="separator:a632144055c730bb27c4faa119c874a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3464ad2da6d0b6f1e7869777f97cdb21"><td class="memItemLeft" align="right" valign="top"><a id="a3464ad2da6d0b6f1e7869777f97cdb21"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a> (bool selType, int selPos)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a3464ad2da6d0b6f1e7869777f97cdb21">refresh</a> (bool selType, int selPos)</td></tr>
 <tr class="memdesc:a3464ad2da6d0b6f1e7869777f97cdb21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Re-render whole screen. <br /></td></tr>
 <tr class="separator:a3464ad2da6d0b6f1e7869777f97cdb21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:a0f5378a0e4dbdb9c9e97e8c0416b6ef9"><td class="memItemLeft" align="right" valign="top"><a id="a0f5378a0e4dbdb9c9e97e8c0416b6ef9"></a>
-buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a> (<a class="el" href="_water_pump_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a>)</td></tr>
+buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a0f5378a0e4dbdb9c9e97e8c0416b6ef9">btnLeft</a> (<a class="el" href="_smart_water_8ino.html#ad40ef48f43c3b55676688d9fd88f6384">PIN_LEFT_BTN</a>)</td></tr>
 <tr class="memdesc:a0f5378a0e4dbdb9c9e97e8c0416b6ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Left button object. <br /></td></tr>
 <tr class="separator:a0f5378a0e4dbdb9c9e97e8c0416b6ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f630a04d791caa0d6d2ed7d74263b84"><td class="memItemLeft" align="right" valign="top"><a id="a6f630a04d791caa0d6d2ed7d74263b84"></a>
-buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">btnSelect</a> (<a class="el" href="_water_pump_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a>)</td></tr>
+buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a6f630a04d791caa0d6d2ed7d74263b84">btnSelect</a> (<a class="el" href="_smart_water_8ino.html#a9c559b66e76d86d927294457a446c665">PIN_SELECT_BTN</a>)</td></tr>
 <tr class="memdesc:a6f630a04d791caa0d6d2ed7d74263b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Select button object. <br /></td></tr>
 <tr class="separator:a6f630a04d791caa0d6d2ed7d74263b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7807dcd2ec6cb69b2e040a4f28a7ad4"><td class="memItemLeft" align="right" valign="top"><a id="aa7807dcd2ec6cb69b2e040a4f28a7ad4"></a>
-buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a> (<a class="el" href="_water_pump_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a>)</td></tr>
+buttonMinim&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#aa7807dcd2ec6cb69b2e040a4f28a7ad4">btnRight</a> (<a class="el" href="_smart_water_8ino.html#a84bf1ecd981b685590a3862c30d2be4f">PIN_RIGHT_BTN</a>)</td></tr>
 <tr class="memdesc:aa7807dcd2ec6cb69b2e040a4f28a7ad4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Right button object. <br /></td></tr>
 <tr class="separator:aa7807dcd2ec6cb69b2e040a4f28a7ad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ac6b8a14f9f7e456b8ff0c1a7d600e2d0"><td class="memItemLeft" align="right" valign="top"><a id="ac6b8a14f9f7e456b8ff0c1a7d600e2d0"></a>
-int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> = 1</td></tr>
-<tr class="memdesc:ac6b8a14f9f7e456b8ff0c1a7d600e2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store current selection arrow position. Later used inside <a class="el" href="_water_pump_8ino.html#a632144055c730bb27c4faa119c874a9f" title="Draw settings arrow.">setSelectionArrow()</a> <br /></td></tr>
+int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#ac6b8a14f9f7e456b8ff0c1a7d600e2d0">selectionPosition</a> = 1</td></tr>
+<tr class="memdesc:ac6b8a14f9f7e456b8ff0c1a7d600e2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store current selection arrow position. Later used inside <a class="el" href="_smart_water_8ino.html#a632144055c730bb27c4faa119c874a9f" title="Draw settings arrow.">setSelectionArrow()</a> <br /></td></tr>
 <tr class="separator:ac6b8a14f9f7e456b8ff0c1a7d600e2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48834bb5f077cf8a67d10e2b926b75dc"><td class="memItemLeft" align="right" valign="top"><a id="a48834bb5f077cf8a67d10e2b926b75dc"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> = false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a48834bb5f077cf8a67d10e2b926b75dc">selectionType</a> = false</td></tr>
 <tr class="memdesc:a48834bb5f077cf8a67d10e2b926b75dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current selection type, affects arrow icon (false = hollow, true = full) <br /></td></tr>
 <tr class="separator:a48834bb5f077cf8a67d10e2b926b75dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Arrow characters</div></td></tr>
@@ -223,15 +223,15 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>humidityPercentage<
 <tr><td colspan="2"><div class="groupText"><p>Timers used in loop(), to re-render UI, write and check eepprom time, and store last safely pumped time </p>
 </div></td></tr>
 <tr class="memitem:ac139fc3ef460f1e6eaa1784c97e4f132"><td class="memItemLeft" align="right" valign="top"><a id="ac139fc3ef460f1e6eaa1784c97e4f132"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a></td></tr>
+long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#ac139fc3ef460f1e6eaa1784c97e4f132">renderTimer</a></td></tr>
 <tr class="memdesc:ac139fc3ef460f1e6eaa1784c97e4f132"><td class="mdescLeft">&#160;</td><td class="mdescRight">UI re-render timer. <br /></td></tr>
 <tr class="separator:ac139fc3ef460f1e6eaa1784c97e4f132"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09b5826a209880a855efce138c142cde"><td class="memItemLeft" align="right" valign="top"><a id="a09b5826a209880a855efce138c142cde"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a></td></tr>
+long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a09b5826a209880a855efce138c142cde">eepromSecondsTimer</a></td></tr>
 <tr class="memdesc:a09b5826a209880a855efce138c142cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check and write pumping intervals in EEPROM. <br /></td></tr>
 <tr class="separator:a09b5826a209880a855efce138c142cde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0422c7715bf2034631d561fb72b70a16"><td class="memItemLeft" align="right" valign="top"><a id="a0422c7715bf2034631d561fb72b70a16"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a></td></tr>
+long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_smart_water_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a></td></tr>
 <tr class="memdesc:a0422c7715bf2034631d561fb72b70a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Store last safely pumped time. <br /></td></tr>
 <tr class="separator:a0422c7715bf2034631d561fb72b70a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -278,13 +278,13 @@ long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wat
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_water_pump_8ino_source.html#l00264">264</a> of file <a class="el" href="_water_pump_8ino_source.html">WaterPump.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_smart_water_8ino_source.html#l00264">264</a> of file <a class="el" href="_smart_water_8ino_source.html">SmartWater.ino</a>.</p>
 <div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;{</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(x, y);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec / 10);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec % 10);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(x, y);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec / 10);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.print(dec % 10);</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
-<div class="ttc" id="a_water_pump_8ino_html_ac21d052bacaf620de472c9d000f0be38"><div class="ttname"><a href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a></div><div class="ttdeci">LiquidCrystal_I2C lcd(0x27, 20, 4)</div><div class="ttdoc">LCD 2004 screen object.</div></div>
+<div class="ttc" id="a_smart_water_8ino_html_ac21d052bacaf620de472c9d000f0be38"><div class="ttname"><a href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a></div><div class="ttdeci">LiquidCrystal_I2C lcd(0x27, 20, 4)</div><div class="ttdoc">LCD 2004 screen object.</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -306,14 +306,14 @@ long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wat
 <p>Get soil moisture percentage. </p>
 <dl class="section return"><dt>Returns</dt><dd>Moisture value from sensor, between 0 and 99 percent </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_water_pump_8ino_source.html#l00295">295</a> of file <a class="el" href="_water_pump_8ino_source.html">WaterPump.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_smart_water_8ino_source.html#l00295">295</a> of file <a class="el" href="_smart_water_8ino_source.html">SmartWater.ino</a>.</p>
 <div class="fragment"><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;{</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="comment">// Reads analog pin value and maps it to 0-99% range</span></div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordtype">int</span> humidityAnalogValue = analogRead(<a class="code" href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a>);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordtype">int</span> humidityAnalogValue = analogRead(<a class="code" href="_smart_water_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a>);</div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">return</span> map(humidityAnalogValue, 0, 1023, 99, 0);</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;}</div>
-<div class="ttc" id="a_water_pump_8ino_html_af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><div class="ttname"><a href="_water_pump_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a></div><div class="ttdeci">#define PIN_HUMIDITY_SENSOR</div><div class="ttdoc">Analog pin 0 for soil moisture sensor.</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00014">WaterPump.ino:14</a></div></div>
+<div class="ttc" id="a_smart_water_8ino_html_af9cffdf311d0a8ddb1ae6ba24e6b5c1b"><div class="ttname"><a href="_smart_water_8ino.html#af9cffdf311d0a8ddb1ae6ba24e6b5c1b">PIN_HUMIDITY_SENSOR</a></div><div class="ttdeci">#define PIN_HUMIDITY_SENSOR</div><div class="ttdoc">Analog pin 0 for soil moisture sensor.</div><div class="ttdef"><b>Definition:</b> <a href="_smart_water_8ino_source.html#l00014">SmartWater.ino:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -352,30 +352,30 @@ long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wat
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_water_pump_8ino_source.html#l00306">306</a> of file <a class="el" href="_water_pump_8ino_source.html">WaterPump.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_smart_water_8ino_source.html#l00306">306</a> of file <a class="el" href="_smart_water_8ino_source.html">SmartWater.ino</a>.</p>
 <div class="fragment"><div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;{</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">switch</span> (pos) {</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">case</span> 1:</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(0, 0);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(0, 0);</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">case</span> 2:</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(3, 0);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(3, 0);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">case</span> 3:</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(6, 0);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(6, 0);</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">case</span> 4:</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(11, 0);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.setCursor(11, 0);</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    }</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> (!type) {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(1);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(2);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(1);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(2);</div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    }</div>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(3);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <a class="code" href="_water_pump_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(4);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(3);</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <a class="code" href="_smart_water_8ino.html#ac21d052bacaf620de472c9d000f0be38">lcd</a>.write(4);</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
 </div><!-- fragment -->
@@ -400,23 +400,23 @@ long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wat
 <dl class="section return"><dt>Returns</dt><dd>Pumping status <br  />
  </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_water_pump_8ino_source.html#l00245">245</a> of file <a class="el" href="_water_pump_8ino_source.html">WaterPump.ino</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_smart_water_8ino_source.html#l00245">245</a> of file <a class="el" href="_smart_water_8ino_source.html">SmartWater.ino</a>.</p>
 <div class="fragment"><div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;{</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// Starts pumping if safety interval passed</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (millis() - <a class="code" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> &gt; <a class="code" href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a>) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        digitalWrite(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, LOW);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">if</span> (millis() - <a class="code" href="_smart_water_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> &gt; <a class="code" href="_smart_water_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a>) {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        digitalWrite(<a class="code" href="_smart_water_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, LOW);</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        delay(3000);</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        digitalWrite(<a class="code" href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, HIGH);</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> = millis();        </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        digitalWrite(<a class="code" href="_smart_water_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a>, HIGH);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="_smart_water_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a> = millis();        </div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">else</span> {</div>
 <div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="ttc" id="a_water_pump_8ino_html_a0422c7715bf2034631d561fb72b70a16"><div class="ttname"><a href="_water_pump_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a></div><div class="ttdeci">long lastPumpingTime</div><div class="ttdoc">Store last safely pumped time.</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00055">WaterPump.ino:55</a></div></div>
-<div class="ttc" id="a_water_pump_8ino_html_a670b18fa6d7200712d13be30be05611b"><div class="ttname"><a href="_water_pump_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a></div><div class="ttdeci">#define PUMPING_SAFETY_INTERVAL</div><div class="ttdoc">Minimal safe interval between pumping.</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00017">WaterPump.ino:17</a></div></div>
-<div class="ttc" id="a_water_pump_8ino_html_aa5049808219ba86e7128edcce54f5497"><div class="ttname"><a href="_water_pump_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a></div><div class="ttdeci">#define PIN_RELAY</div><div class="ttdoc">Relay pin number.</div><div class="ttdef"><b>Definition:</b> <a href="_water_pump_8ino_source.html#l00008">WaterPump.ino:8</a></div></div>
+<div class="ttc" id="a_smart_water_8ino_html_a0422c7715bf2034631d561fb72b70a16"><div class="ttname"><a href="_smart_water_8ino.html#a0422c7715bf2034631d561fb72b70a16">lastPumpingTime</a></div><div class="ttdeci">long lastPumpingTime</div><div class="ttdoc">Store last safely pumped time.</div><div class="ttdef"><b>Definition:</b> <a href="_smart_water_8ino_source.html#l00055">SmartWater.ino:55</a></div></div>
+<div class="ttc" id="a_smart_water_8ino_html_a670b18fa6d7200712d13be30be05611b"><div class="ttname"><a href="_smart_water_8ino.html#a670b18fa6d7200712d13be30be05611b">PUMPING_SAFETY_INTERVAL</a></div><div class="ttdeci">#define PUMPING_SAFETY_INTERVAL</div><div class="ttdoc">Minimal safe interval between pumping.</div><div class="ttdef"><b>Definition:</b> <a href="_smart_water_8ino_source.html#l00017">SmartWater.ino:17</a></div></div>
+<div class="ttc" id="a_smart_water_8ino_html_aa5049808219ba86e7128edcce54f5497"><div class="ttname"><a href="_smart_water_8ino.html#aa5049808219ba86e7128edcce54f5497">PIN_RELAY</a></div><div class="ttdeci">#define PIN_RELAY</div><div class="ttdoc">Relay pin number.</div><div class="ttdef"><b>Definition:</b> <a href="_smart_water_8ino_source.html#l00008">SmartWater.ino:8</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -425,7 +425,7 @@ long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_wat
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_ee49014ee30b475461e5afc910888cd4.html">firmwares</a></li><li class="navelem"><a class="el" href="dir_8c58555a76be2a3d5b3f7409cfe0a77c.html">WaterPump</a></li><li class="navelem"><a class="el" href="_water_pump_8ino.html">WaterPump.ino</a></li>
+    <li class="navelem"><a class="el" href="dir_ee49014ee30b475461e5afc910888cd4.html">firmwares</a></li><li class="navelem"><a class="el" href="dir_8c58555a76be2a3d5b3f7409cfe0a77c.html">WaterPump</a></li><li class="navelem"><a class="el" href="_smart_water_8ino.html">SmartWater.ino</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

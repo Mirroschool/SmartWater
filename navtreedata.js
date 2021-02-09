@@ -39,7 +39,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_water_pump_8ino.html"
+"_smart_water_8ino.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
