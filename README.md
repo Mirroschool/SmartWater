@@ -1,5 +1,5 @@
 # SmartWater
 
 ## Documentation
-- [English](https://mirroschool.github.io/WaterPump/)
-- [Ukrainian](https://mirroschool.github.io/WaterPump/ua/)
+- [English](https://mirroschool.github.io/SmartWater/)
+- [Ukrainian](https://mirroschool.github.io/SmartWater/ua/)
